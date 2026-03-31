@@ -13,13 +13,13 @@ It demonstrates:
 - package structure
 - parameter loading with YAML
 - ROS 2 launch integration
-- structured logging
+- consistent logging practices
 - basic parameter validation
 
 ## Project structure
 
 ```text
-rosnext_ws/
+rosnext/
 ├── config/
 ├── docker/
 ├── docs/
@@ -56,35 +56,13 @@ Its purpose is to:
 
 ## Quick start
 
-Source ROS 2:
-
-```bash
-source /opt/ros/humble/setup.bash
-```
-
-Install dependencies:
+Recommended workflow with RosNext scripts:
 
 ```bash
 cd ~/rosnext_ws
-rosdep install --from-paths src --ignore-src -r -y
-```
-
-Build the workspace:
-
-```bash
-colcon build
-```
-
-Source the workspace:
-
-```bash
-source install/setup.bash
-```
-
-Run the starter package:
-
-```bash
-ros2 launch heartbeat_node bringup.launch.py
+./scripts/bootstrap.sh
+source scripts/dev.sh
+./scripts/run.sh
 ```
 
 ## Verify published topic
@@ -92,8 +70,8 @@ ros2 launch heartbeat_node bringup.launch.py
 In another terminal:
 
 ```bash
-source /opt/ros/humble/setup.bash
-source ~/rosnext_ws/install/setup.bash
+cd ~/rosnext_ws
+source scripts/dev.sh
 ros2 topic echo /heartbeat
 ```
 
@@ -101,6 +79,19 @@ You should see output similar to:
 
 ```text
 data: RosNext heartbeat OK
+```
+
+## Manual workflow
+
+If you prefer to work manually without RosNext scripts:
+
+```bash
+source /opt/ros/humble/setup.bash
+cd ~/rosnext_ws
+rosdep install --from-paths src --ignore-src -r -y
+colcon build
+source install/setup.bash
+ros2 launch heartbeat_node bringup.launch.py
 ```
 
 ## Goals of RosNext
