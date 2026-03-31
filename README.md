@@ -1,6 +1,3 @@
-Claro, aquí te lo dejo **completo y bien armado** para pegarlo tal cual en tu `README.md`:
-
-````md
 # RosNext
 
 RosNext is a starter template for ROS 2 projects focused on modularity, automation, reproducibility, and developer experience.
