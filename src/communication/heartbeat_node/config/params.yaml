@@ -1,0 +1,5 @@
+heartbeat_node:
+  ros__parameters:
+    message: "RosNext heartbeat OK"
+    topic_name: "/heartbeat"
+    period: 1.0
